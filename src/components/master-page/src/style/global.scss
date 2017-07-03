@@ -1,0 +1,30 @@
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: element;
+}
+
+.clearfix {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+.left{
+  float: left!important;
+}
+
+.right{
+  float: right!important;
+}

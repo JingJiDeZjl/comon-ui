@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+	margin: 0px;
+  padding: 0px;
+}
+
+body {
+	font-size: 14px;
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+ul, li{
+	list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #20a0ff;
+  &:hover {
+    color: #20a0ff;
+  }
+}
