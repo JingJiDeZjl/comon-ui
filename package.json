@@ -1,6 +1,6 @@
 {
   "name": "comon-ui",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "comon ui",
   "main": "dist/comon-ui.js",
   "scripts": {
@@ -53,5 +53,9 @@
     "vue-template-compiler": "^2.3.4",
     "webpack": "^3.0.0",
     "webpack-build-notifier": "^0.1.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changfengliu/comon-ui.git"
   }
 }
