@@ -35,7 +35,7 @@
 		},
 		computed: {
       menu(){
-        return this.config.menu
+        return this.config ? this.config.menu : {}
       },
 			userInfo(){
 				return {
@@ -99,8 +99,8 @@
 		}
 	}
   .my-content{
-  	margin-top: 40px;
-    padding-left: 160px;
+    margin-top: 40px;
+    padding: 10px 10px 10px 170px;
 		&.no-menu{
 			margin-top: 0!important;
 			padding-left: 0!important;

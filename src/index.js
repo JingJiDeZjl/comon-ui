@@ -1,7 +1,9 @@
 let MasterPage = require('./components/master-page/index.js')['default']
+let Page404 = require('./components/master-page/index.js')['default']
 
 const components = [
-  MasterPage
+  MasterPage,
+  Page404
 ]
 
 const install = function(Vue, opts = {}) {
@@ -19,5 +21,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   version: '1.0.0',
   install,
-  MasterPage
+  MasterPage,
+  Page404
 }

@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -480,9 +480,33 @@ module.exports = function normalizeComponent (
 "use strict";
 
 
-var MasterPage = __webpack_require__(4)['default'];
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var components = [MasterPage];
+var _main = __webpack_require__(5);
+
+var _main2 = _interopRequireDefault(_main);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_main2.default.install = function (Vue) {
+  Vue.component(_main2.default.name, _main2.default);
+};
+
+exports.default = _main2.default;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var MasterPage = __webpack_require__(3)['default'];
+var Page404 = __webpack_require__(3)['default'];
+
+var components = [MasterPage, Page404];
 
 var install = function install(Vue) {
   var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -500,31 +524,9 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   version: '1.0.0',
   install: install,
-  MasterPage: MasterPage
+  MasterPage: MasterPage,
+  Page404: Page404
 };
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _main = __webpack_require__(5);
-
-var _main2 = _interopRequireDefault(_main);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_main2.default.install = function (Vue) {
-  Vue.component(_main2.default.name, _main2.default);
-};
-
-exports.default = _main2.default;
 
 /***/ }),
 /* 5 */
@@ -606,7 +608,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n.header[data-v-58c7da32] {\n  position: fixed;\n  top: 0;\n  z-index: 100;\n  width: 100%;\n  overflow: visible;\n  height: 40px;\n  line-height: 40px;\n  min-height: 40px;\n  background-color: #324157;\n}\n.header .logo[data-v-58c7da32] {\n    width: 160px;\n    text-align: center;\n}\n.header .logo a[data-v-58c7da32] {\n      letter-spacing: 1px;\n      color: #FFF;\n      font-size: 16px;\n}\n.my-content[data-v-58c7da32] {\n  margin-top: 40px;\n  padding-left: 160px;\n}\n.my-content.no-menu[data-v-58c7da32] {\n    margin-top: 0 !important;\n    padding-left: 0 !important;\n}\n", ""]);
+exports.push([module.i, "\n.header[data-v-58c7da32] {\n  position: fixed;\n  top: 0;\n  z-index: 100;\n  width: 100%;\n  overflow: visible;\n  height: 40px;\n  line-height: 40px;\n  min-height: 40px;\n  background-color: #324157;\n}\n.header .logo[data-v-58c7da32] {\n    width: 160px;\n    text-align: center;\n}\n.header .logo a[data-v-58c7da32] {\n      letter-spacing: 1px;\n      color: #FFF;\n      font-size: 16px;\n}\n.my-content[data-v-58c7da32] {\n  margin-top: 40px;\n  padding: 10px 10px 10px 170px;\n}\n.my-content.no-menu[data-v-58c7da32] {\n    margin-top: 0 !important;\n    padding-left: 0 !important;\n}\n", ""]);
 
 // exports
 
@@ -727,7 +729,7 @@ exports.default = {
 
 	computed: {
 		menu: function menu() {
-			return this.config.menu;
+			return this.config ? this.config.menu : {};
 		},
 		userInfo: function userInfo() {
 			return {
@@ -991,7 +993,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n.cmpSkeleton[data-v-2e2dabd0] {\n  width: 160px;\n  background: #324157;\n  position: fixed;\n  left: 0;\n  top: 40px;\n  bottom: 0;\n  z-index: 999;\n}\n.cmpSkeleton.collapsed[data-v-2e2dabd0] {\n    width: 50px;\n}\n.cmpSkeleton.collapsed .el-menu-item[data-v-2e2dabd0] {\n      padding-left: 14px !important;\n      position: relative;\n}\n.cmpSkeleton.collapsed .el-menu-item i[data-v-2e2dabd0] {\n        font-size: 22px;\n        vertical-align: middle;\n}\n.cmpSkeleton.collapsed .el-menu-item .name[data-v-2e2dabd0] {\n        display: none;\n}\n.cmpSkeleton.collapsed .el-menu-item:hover .name[data-v-2e2dabd0] {\n        display: block;\n        background: #48576a;\n        width: auto;\n        position: absolute;\n        top: 0;\n        left: 100%;\n        z-index: 999999;\n        padding: 0px 10px;\n}\n.cmpSkeleton.collapsed ~ .my-content[data-v-2e2dabd0] {\n      padding-left: 55px;\n}\n", ""]);
+exports.push([module.i, "\n.cmpSkeleton[data-v-2e2dabd0] {\n  width: 160px;\n  background: #324157;\n  position: fixed;\n  left: 0;\n  top: 40px;\n  bottom: 0;\n  z-index: 999;\n}\n", ""]);
 
 // exports
 
@@ -1018,10 +1020,6 @@ exports.default = {
 		};
 	},
 
-	computed: {},
-	watch: {},
-	mounted: function mounted() {},
-
 	methods: {
 		selectSubMenu: function selectSubMenu(path) {
 			this.$emit('select', path);
@@ -1043,19 +1041,42 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "select": _vm.selectSubMenu
     }
-  }, _vm._l((_vm.menu), function(menuItem) {
-    return _c('el-menu-item', {
+  }, [_vm._l((_vm.menu), function(menuItem) {
+    return [(!menuItem.children) ? [_c('el-menu-item', {
       key: menuItem['url'] + '_left',
       class: menuItem['url'] == _vm.lastPath ? 'current is-active' : '',
       attrs: {
         "index": menuItem['url']
       }
     }, [_c('i', {
-      class: 'el-icon-' + menuItem['icon']
+      class: 'fa fa-' + menuItem['icon'],
+      attrs: {
+        "aria-hidden": "true"
+      }
     }), _vm._v(" "), _c('span', {
-      staticClass: "name"
-    }, [_vm._v(_vm._s(menuItem['name']))])])
-  }))], 1)
+      staticClass: "menu-text"
+    }, [_vm._v(_vm._s(menuItem['name']))])])] : [_c('el-submenu', {
+      attrs: {
+        "index": ""
+      }
+    }, [_c('template', {
+      slot: "title"
+    }, [_c('i', {
+      class: 'fa fa-' + menuItem['icon'],
+      attrs: {
+        "aria-hidden": "true"
+      }
+    }), _vm._v("\n\t\t\t\t\t\t" + _vm._s(menuItem.name) + "\n\t\t\t\t\t")]), _vm._v(" "), _vm._l((menuItem.children), function(subMenuItem) {
+      return _c('el-menu-item', {
+        key: subMenuItem['url'] + '_submenu',
+        attrs: {
+          "index": subMenuItem['url']
+        }
+      }, [_c('span', {
+        staticClass: "menu-text"
+      }, [_vm._v(_vm._s(subMenuItem['name']))])])
+    })], 2)]]
+  })], 2)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
