@@ -1,5 +1,5 @@
 let MasterPage = require('./components/master-page/index.js')['default']
-let Page404 = require('./components/master-page/index.js')['default']
+let Page404 = require('./components/page-404/index.js')['default']
 
 const components = [
   MasterPage,

@@ -26,6 +26,14 @@ module.exports = {
         test: /\.js$/,
         use: ['babel-loader'],
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: path.resolve(__dirname, 'dist/images/[name].[hash:7].[ext]')
+        }
       }
 		]
 	},

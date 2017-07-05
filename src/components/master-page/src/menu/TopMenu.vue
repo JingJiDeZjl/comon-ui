@@ -1,13 +1,16 @@
 <template>
-	<ul class="cmpSkeleton left">
-		<li
-			v-for="(menuItem, index) in menu"
-			:class="currentIndex == index ? 'current' : ''"
-			@click="selectMenu(menuItem, index)"
-		>
-			<a>{{menuItem['name']}}</a>
-		</li>
-	</ul>
+	<div class="top-menu left">
+		<el-menu theme="dark" default-active="0"  mode="horizontal" @select="select">
+		  <el-menu-item
+				v-for="(menuItem, index) in menu"
+				:index="index + ''"
+				:key="'top_menu_' + index"
+				class="top-menu-item"
+			>
+				{{menuItem['name']}}
+			</el-menu-item>
+		</el-menu>
+	</div>
 </template>
 
 
@@ -20,14 +23,13 @@
 		},
 		data() {
       return {
-        currentIndex: 0
+        currentIndex: '0'
       }
 		},
 		methods: {
-			selectMenu(menuItem, index){
+			select(index){
         if(this.currentIndex != index){
-          this.currentIndex = parseInt(index)
-					this.$emit('select', menuItem, this.currentIndex)
+					this.$emit('select', this.menu[index], parseInt(this.currentIndex = index))
         }
       },
 		}
@@ -36,28 +38,13 @@
 
 
 <style lang="scss" scoped>
-	.cmpSkeleton{
-		> li{
-	    float: left;
-			position: relative;
-	    min-width: 90px;
-	    text-align: center;
-	    padding: 0px 10px;
-			cursor: pointer;
-			> a{
-				color: #bfcbd9;
-			}
-			&:hover, &.current{
-				>a{
-					color:#FFFFFF;
-				}
-			}
-			&:hover{
-		    background-color: rgba(28, 38, 55, 0.55);
-			}
-			&.current{
-		    background-color: #1c2637;
-			}
+	.top-menu-item{
+    color: rgba(255, 255, 255, 0.5);
+    height: 40px;
+    line-height: 40px;
+		&.is-active{
+			color: rgb(255, 255, 255);
+			background-color: #1c2637;
 		}
 	}
 </style>
