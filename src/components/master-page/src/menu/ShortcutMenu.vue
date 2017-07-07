@@ -49,6 +49,9 @@
 			otherplt: {
 	      type: Array
 	    },
+			config: {
+				type: Object
+			},
 			user: {
 	      type: Object
 	    },

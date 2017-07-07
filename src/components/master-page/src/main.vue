@@ -1,15 +1,16 @@
 <template>
-	<div class="master-page cmpSkeleton">
+	<div class="master-page">
 		<div class="header" v-if="isShowMenu">
 			<div class="logo left">
 				<img src="../../../assets/images/logo.png"/>
 				<a href="/" :title="config.title || ''">{{config.title || ''}}</a>
 			</div>
-			<TopMenu :menu="menu" @select="selectTopMenu"/>
-			<ShortcutMenu :otherplt="config.otherPlt" :user="userInfo" :city="cityInfo"/>
+			<TopMenu :config="topMenuConfig" :menu="menu" @select="selectTopMenu"/>
+			<ShortcutMenu :config="shortcutMenuConfig" :otherplt="config.otherPlt" :user="userInfo" :city="cityInfo"/>
 		</div>
 		<div class="left-menu" v-if="isShowLeftMenu">
 			<LeftMenu
+				:config="leftMenuConfig"
 				:menu="subMenu"
 				:activePath="activePath"
 				@select="selectLeftMenu"
@@ -27,30 +28,47 @@
 	import LeftMenu from './menu/LeftMenu.vue'
 	import ShortcutMenu from './menu/ShortcutMenu.vue'
 	export default {
-		name: 'CUMasterPage',
+		name: 'CuMasterPage',
 		props: {
 			config: {
 	      type: Object
 	    }
 		},
 		data() {
-			let subMenu = this.config.menu[0]['children']
+			let subMenu = [];
 			let activePath = ''
-			if(subMenu && subMenu.length){
-				activePath = subMenu[0]['url']
+			if(this.config.menu && this.config.menu.data && this.config.menu.data.length){
+				subMenu = this.config.menu.data[0]['children']
+				if(subMenu && subMenu.length){
+					activePath = subMenu[0]['url']
+				}
+			} else {
+				console.warn('未配置菜单，请参考文档!')
 			}
       return {
         transitionName: '',
 				topMenuIndex: 0,
-        isShowMenu: true,
 				subMenu: subMenu,
 				activePath: activePath
       }
 		},
 		computed: {
       menu(){
-        return this.config ? this.config.menu : {}
+				if(this.config && this.config.menu){
+					return this.config.menu.data || []
+				} else {
+					return []
+				}
       },
+			topMenuConfig(){
+				return this.config.menu['topMenu'] || {}
+			},
+			leftMenuConfig(){
+				return this.config.menu['leftMenu'] || {}
+			},
+			shortcutMenuConfig(){
+				return this.config.menu['shortcutMenu'] || {}
+			},
 			userInfo(){
 				return {
 					user_name: this.config.user_name,
@@ -66,14 +84,15 @@
 					names: city_names ? city_names.split(',') : ''
 				}
 			},
+			isShowMenu(){
+				//若被嵌入到 iframe 则不显示菜单.
+				return this.menu.length && window.top === window.self;
+			},
 			isShowLeftMenu(){
 				return this.isShowMenu && this.subMenu && this.subMenu.length
 			}
 		},
-		created(){
-			//若被嵌入到 iframe 则不显示菜单.
-			this.isShowMenu = window.top === window.self;
-		},
+		created(){},
 		methods: {
 			selectTopMenu(menuItem, index){
 				this.topMenuIndex = index
@@ -100,7 +119,9 @@
 <style lang="scss" scoped>
 	.header{
     position: fixed;
+		left:0;
 		top:0;
+		right:0;
 		z-index: 100;
     width: 100%;
     overflow: visible;
@@ -124,7 +145,6 @@
 	}
 	.left-menu{
     width: 160px;
-    background: #324157;
     position: fixed;
 		overflow: auto;
     left: 0;
@@ -136,7 +156,7 @@
     margin-top: 40px;
     padding: 10px;
 		padding-left: 10px;
-		transition: padding-left 400ms;
+		// transition: padding-left 400ms;
 		&.no-menu{
 			margin-top: 0!important;
 			padding-left: 0!important;

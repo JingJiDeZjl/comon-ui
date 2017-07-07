@@ -19,6 +19,9 @@
 		props: {
 			menu: {
 				type: Array
+			},
+			config: {
+				type: Object
 			}
 		},
 		data() {
@@ -42,9 +45,15 @@
     color: rgba(255, 255, 255, 0.5);
     height: 40px;
     line-height: 40px;
+		margin-right: 2px;
+		&:hover{
+			color: rgba(255, 255, 255, 1);
+			border-bottom:none!important;
+		}
 		&.is-active{
-			color: rgb(255, 255, 255);
-			background-color: #1c2637;
+			color: rgb(255, 255, 255)!important;
+			background-color: #1c2637!important;
+	    border-bottom: 5px solid #20a0ff!important;
 		}
 	}
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "comon-ui",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "description": "comon ui",
   "main": "dist/comon-ui.js",
   "scripts": {

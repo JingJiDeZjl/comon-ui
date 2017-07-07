@@ -1,8 +1,9 @@
 <template>
-	<el-menu theme="dark"
+	<el-menu :theme="theme || 'dark'"
 		@select="selectSubMenu"
 		:default-active="activePath"
 		:key="'left_menu_' + topMenuIndex"
+		style="height:100%"
 	>
 		<template v-for="menuItem in menu">
 			<!--二级菜单-->
@@ -39,11 +40,19 @@
 			menu: {
 				type: Array
 			},
+			config: {
+				type: Object
+			},
 			activePath: {
 				type: String
 			},
 			topMenuIndex: {
 				type: Number
+			}
+		},
+		computed: {
+			theme(){
+				return this.config['theme'] || 'dark'
 			}
 		},
 		methods: {
