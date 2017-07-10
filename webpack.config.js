@@ -42,9 +42,6 @@ module.exports = {
       title: "Common UI Build Done"
     })
   ],
-  devServer: {
-    hot: false
-  },
   stats: {
     modules: false
   }

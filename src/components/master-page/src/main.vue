@@ -86,7 +86,7 @@
 			},
 			isShowMenu(){
 				//若被嵌入到 iframe 则不显示菜单.
-				return this.menu.length && window.top === window.self;
+				return this.menu.length ;//&& window.top === window.self;
 			},
 			isShowLeftMenu(){
 				return this.isShowMenu && this.subMenu && this.subMenu.length
