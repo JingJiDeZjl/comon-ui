@@ -15,7 +15,7 @@
 			</template>
 			<!--三级菜单-->
 			<template v-else>
-				<el-submenu index="">
+				<el-submenu :index="menuItem['name']">
 			    <template slot="title">
 						<i :class="'fa fa-' + menuItem['icon']" aria-hidden="true"></i>
 						<span class="menu-group-text">{{menuItem['name']}}</span>

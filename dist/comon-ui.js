@@ -973,7 +973,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "menu-text"
     }, [_vm._v(_vm._s(menuItem['name']))])])] : [_c('el-submenu', {
       attrs: {
-        "index": ""
+        "index": menuItem['name']
       }
     }, [_c('template', {
       slot: "title"
