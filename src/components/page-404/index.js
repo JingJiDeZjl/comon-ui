@@ -5,3 +5,4 @@ Page404.install = function(Vue) {
 };
 
 export default Page404;
+

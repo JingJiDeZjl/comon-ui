@@ -23,6 +23,7 @@
 	</div>
 </template>
 
+
 <script>
 	import TopMenu from './menu/TopMenu.vue'
 	import LeftMenu from './menu/LeftMenu.vue'
